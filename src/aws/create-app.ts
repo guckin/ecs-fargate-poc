@@ -20,7 +20,7 @@ const certStack = new CertificateStack(createApp, `Certificate-${stage}`, {
     subdomain,
 });
 
-new RestApiStack(createApp, `RestAPIStack-${stage}`, {
+new RestApiStack(createApp, `poc-stack-${stage}`, {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
     crossRegionReferences: true,
     stage,
