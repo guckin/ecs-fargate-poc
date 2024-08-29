@@ -1,6 +1,6 @@
 import {Stack, StackProps} from 'aws-cdk-lib';
 import {Construct} from 'constructs';
-import {Certificate, CertificateValidation, ICertificate} from 'aws-cdk-lib/aws-certificatemanager';
+import {Certificate, CertificateValidation} from 'aws-cdk-lib/aws-certificatemanager';
 import {HostedZone} from 'aws-cdk-lib/aws-route53';
 
 export type CertificateProps = StackProps & {
