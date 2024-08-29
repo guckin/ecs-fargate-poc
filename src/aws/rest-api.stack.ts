@@ -81,7 +81,7 @@ export class RestApiStack extends Stack {
 
     const apiDomainName = new DomainName(this, 'ApiDomainName', {
       domainName: `${props.subdomain}.${props.stage}.${props.domainName}`,
-      certificate: props.cert,
+      certificate: Certificate.fromCertificateArn(scope, id, props.cert.certificateArn),
       endpointType: EndpointType.EDGE
     });
 
