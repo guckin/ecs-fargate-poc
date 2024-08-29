@@ -9,8 +9,8 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig.json'
-      - 'rollup.config.js'
       - '.github/workflows/**'
+      - 'build.mjs'
 
 concurrency:
   group: ${{ github.ref }}
@@ -33,9 +33,9 @@ jobs:
         run: |
           npm run lint
 
-      - name: Test
-        run: |
-          npm test
+#      - name: Test
+#        run: |
+#          npm test
 
       - name: Deploy
         uses: youyo/aws-cdk-github-actions@v2

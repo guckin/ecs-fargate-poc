@@ -10,7 +10,7 @@ export type CertificateProps = StackProps & {
 };
 
 export class CertificateStack extends Stack {
-  private cert: Certificate;
+  cert: Certificate;
 
   constructor(scope: Construct, id: string, props: CertificateProps) {
     super(scope, id, props);
@@ -24,7 +24,4 @@ export class CertificateStack extends Stack {
     });
   }
 
-  public getCert(scope: Construct, id: string): ICertificate {
-    return Certificate.fromCertificateArn(scope, id, this.cert.certificateArn);
-  }
 }

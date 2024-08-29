@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import {App} from 'aws-cdk-lib';
 
-import {RestApiStack} from './rest-api/rest-api.stack';
-import {CertificateStack} from './certificate/certificate.stack';
+import {RestApiStack} from './rest-api.stack.js';
+import {CertificateStack} from './certificate.stack.js';
 
 const createApp = new App();
 const stage = process.env.STAGE || 'dev';
 const domainName = 'slippys.cool';
-const subdomain = 'serverless-template';
+const subdomain = 'poc-fargate-ecs';
 
 const certStack = new CertificateStack(createApp, `Certificate-${stage}`, {
     stage,
@@ -20,11 +20,11 @@ const certStack = new CertificateStack(createApp, `Certificate-${stage}`, {
     subdomain,
 });
 
-export const stack = new RestApiStack(createApp, `RestAPIStack-${stage}`, {
+new RestApiStack(createApp, `RestAPIStack-${stage}`, {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
     crossRegionReferences: true,
     stage,
-    certStack,
+    cert: certStack.cert,
     domainName,
     subdomain,
 });
